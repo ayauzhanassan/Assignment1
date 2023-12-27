@@ -7,20 +7,24 @@ import java.util.ArrayList;
 public class MyApplication {
     public static void main(String[] args) {
         ArrayList<Point> pointList = new ArrayList<>();
-        String lineX, lineY;
+        String line;
         File fileName = new File("/Users/ayauzhanassan/IdeaProjects/Assignment1/src/source.txt");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            while ((lineX = reader.readLine()) != null && (lineY = reader.readLine()) != null) {
-                double x = Double.parseDouble(lineX.trim());
-                double y = Double.parseDouble(lineY.trim());
+            // Split each line by comma to separate x and y coordinates
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                double x = Double.parseDouble(parts[0].trim());
+                double y = Double.parseDouble(parts[1].trim());
                 pointList.add(new Point(x, y));
             }
         } catch (IOException e) {
+            // Handle IO exceptions if file reading fails
             System.out.println("Error reading file: " + fileName);
             e.printStackTrace();
         }
 
+        // ArrayList to Points
         Point[] points = new Point[pointList.size()];
         points = pointList.toArray(points);
 
