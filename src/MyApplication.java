@@ -7,14 +7,13 @@ import java.util.ArrayList;
 public class MyApplication {
     public static void main(String[] args) {
         ArrayList<Point> pointList = new ArrayList<>();
-        String line;
+        String lineX, lineY;
         File fileName = new File("/Users/ayauzhanassan/IdeaProjects/Assignment1/src/source.txt");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                double x = Double.parseDouble(parts[0].trim());
-                double y = Double.parseDouble(parts[1].trim());
+            while ((lineX = reader.readLine()) != null && (lineY = reader.readLine()) != null) {
+                double x = Double.parseDouble(lineX.trim());
+                double y = Double.parseDouble(lineY.trim());
                 pointList.add(new Point(x, y));
             }
         } catch (IOException e) {
