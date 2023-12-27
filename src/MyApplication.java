@@ -8,7 +8,7 @@ public class MyApplication {
     public static void main(String[] args) {
         ArrayList<Point> pointList = new ArrayList<>();
         String line;
-        String fileName = "coordinates.txt";
+        File fileName = new File("/Users/ayauzhanassan/IdeaProjects/Assignment1/src/source.txt");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while ((line = reader.readLine()) != null) {
